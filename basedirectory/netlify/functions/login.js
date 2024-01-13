@@ -3,7 +3,7 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const url = require('url')
 
-require('./node_modules/dotenv').config();
+require('../../node_modules/dotenv').config();
 require('./app');
 
 // const login = express();
