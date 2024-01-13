@@ -1,15 +1,24 @@
 const express = require('express')
 const session = require('express-session')
 const bodyParser = require('body-parser')
+const cookieParser = require("cookie-parser");
 const url = require('url')
 
 require('../../node_modules/dotenv').config();
-require('./app');
+// require('./app');
 
 // const login = express();
 
 // Create a new instance of express
-// const app = express()
+import express, { app } from "express";
+const app = app()
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+//serving public file
+app.use(express.static(__dirname));
+
+app.use(cookieParser());
 
 // Configuramos el middleware de sesión para usar una clave secreta personalizada y permitir que las sesiones se guarden 
 // automáticamente. Ahora podemos acceder a los datos de sesión en cada solicitud utilizando el objeto req.session.
