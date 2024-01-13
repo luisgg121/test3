@@ -1,4 +1,4 @@
-require('../node_modules/dotenv').config();
+require('../../node_modules/dotenv').config();
 // let con = require('../server');
 // console.log("Con =" + JSON.stringify(con));
 // let connection = con.connection;
