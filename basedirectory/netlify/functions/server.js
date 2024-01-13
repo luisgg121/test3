@@ -279,7 +279,7 @@ app.get('/libros', function (req, res) {
     }
 })
 
-// module.exports = app;
+module.exports = app;
 module.exports.connection = connection;
 
 
