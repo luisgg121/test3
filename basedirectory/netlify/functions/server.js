@@ -13,12 +13,14 @@ const session = require('express-session')
 const bodyParser = require('body-parser')
 const cookieParser = require("cookie-parser");
 
-import express, { app } from "express";
+import express, { Router } from "express";
 import serverless from "serverless-http";
 
 // Create a new instance of express
 // const app = express()
-const app = app();
+const app = Router();
+const server = express();
+server.use("/server/", app);
 // const app = express.app()
 // parsing the incoming data
 app.use(express.json());
@@ -283,4 +285,4 @@ module.exports = app;
 module.exports.connection = connection;
 
 
-export const handler = serverless(app);
+export const handler = serverless(server);

@@ -3,3 +3,12 @@ package = "@netlify/plugin-nextjs"
 
 [build]
 publish = ".next"
+
+[functions]
+  external_node_modules = ["express"]
+  node_bundler = "esbuild"
+[[redirects]]
+  force = true
+  from = "/server/*"
+  status = 200
+  to = "/.netlify/functions/server/:splat"
