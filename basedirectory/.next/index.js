@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+const port = process.env.PORT;
+
 document.getElementById("Autores").innerHTML = "<h2>Principio</h2>";
 
 var renglon = 1;
@@ -78,7 +82,7 @@ function userCreate() {
     const apellidos = document.getElementById("lname").value;
     // const username = document.getElementById("username").value;
     // const email = document.getElementById("email").value;
-    fetch(`http://localhost:8080/autores?accion=alta&nombre=${nombre}&apellidos=${apellidos}`)
+    fetch(`https://localhost:${port}/autores?accion=alta&nombre=${nombre}&apellidos=${apellidos}`)
         .then(response => response.json())
         .then(response => {
             // console.log("Dentro de userCreate, response = " + JSON.parse(JSON.stringify(response)));
@@ -137,7 +141,7 @@ function updateRow(r) {
 
 function showUserEditBox(id) {
     console.log(id);
-    fetch(`http://localhost:8080/autores?accion=consultarAutor&id=${id}`)
+    fetch(`https://localhost:${port}/autores?accion=consultarAutor&id=${id}`)
         .then(response => response.json())
         .then(response => {
             object = JSON.stringify(response);
@@ -179,7 +183,7 @@ function userEdit() {
     const nombre = document.getElementById("fname").value;
     const apellidos = document.getElementById("lname").value;
 
-    fetch(`http://localhost:8080/autores?accion=actualizar&id=${id}&nombre=${nombre}&apellidos=${apellidos}`)
+    fetch(`https://localhost:${port}/autores?accion=actualizar&id=${id}&nombre=${nombre}&apellidos=${apellidos}`)
         // .then(response => response.json())
         .then(response => {
             table = document.getElementById("tabla");
@@ -204,7 +208,7 @@ function userDelete(id) {
     // const apellidos = document.getElementById("lname").value;
     // const username = document.getElementById("username").value;
     // const email = document.getElementById("email").value;
-    fetch(`http://localhost:8080/autores?accion=baja&id=${id}`)
+    fetch(`https://localhost:${port}/autores?accion=baja&id=${id}`)
         // .then(response => response.json())
         .then(response => {
             loadTable();
